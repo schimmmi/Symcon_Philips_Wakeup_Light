@@ -12,7 +12,7 @@ declare(strict_types=1);
  *          Die exakte API-Struktur kann je nach Firmware variieren. Daher sind die Endpunkte als
  *          Eigenschaften konfigurierbar. Voreingestellt ist ein plausibler Standardpfad.
  */
-class SOMNEO_SomneoLegacy extends IPSModule
+class SOMNEO_Somneo extends IPSModule
 {
     public function Create(): void
     {

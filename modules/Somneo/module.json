@@ -1,14 +1,17 @@
 {
-  "id": "{C7C2B9C2-6B8E-4C2B-9E8E-7D08E0E8F2B4}",
-  "name": "Philips Somneo (HF3671/01)",
+  "id": "{9A2E9137-5E8E-4F43-9B98-5F1E1BCE77B1}",
+  "name": "Philips Somneo (Legacy – nicht verwenden)",
   "type": 3,
   "vendor": "Philips",
   "aliases": [
-    "Somneo",
-    "Wake-up Light"
+    "Somneo (Legacy)",
+    "Wake-up Light (Legacy)",
+    "Deprecated"
   ],
   "parentRequirements": [],
   "childRequirements": [],
   "implemented": [],
-  "prefix": "SOMNEO"
+  "prefix": "SOMNEO",
+  "deprecated": true,
+  "note": "Dieses Modul ist nur aus Kompatibilitätsgründen vorhanden. Bitte verwenden Sie stattdessen das Modul im Ordner 'Somneo/' auf Root-Ebene."
 }

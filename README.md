@@ -42,6 +42,10 @@ Hinweis: Die lokal bereitgestellte API unterscheidet sich je nach Firmwarestand.
    - Intervall (Sekunden): z. B. 300
 4. Speichern. Über die Schaltfläche "Jetzt aktualisieren" kann ein Abruf getestet werden.
 
+## Repository-Struktur (wichtiger Hinweis)
+- Das eigentliche Modul liegt im Ordner `Somneo/` auf Root-Ebene.
+- Der alte Pfad `modules/Somneo` ist als Legacy hinterlegt und sollte nicht mehr verwendet werden. Falls in IP‑Symcon zwei Module mit ähnlichem Namen angezeigt werden, wählen Sie das Modul "Philips Somneo (HF3671/01)" aus dem Ordner `Somneo/`. Das Modul "Philips Somneo (Legacy – nicht verwenden)" dient nur zur Abwärtskompatibilität.
+
 ## Hinweise zur API
 - Viele Somneo-Geräte nutzen HTTPS mit selbstsigniertem Zertifikat. In diesem Fall kann die Prüfung in den Einstellungen deaktiviert werden.
 - Die genaue Struktur der API (Pfad und JSON-Felder) kann je nach Firmware variieren. Das Modul versucht, häufige Varianten zu erkennen (z. B. `on`/`power`, `brightness`/`bri`, `temperature`/`temp`).
