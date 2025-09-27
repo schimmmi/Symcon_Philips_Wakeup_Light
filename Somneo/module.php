@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 /**
  * IP-Symcon Modul: Philips Somneo (HF3671/01)
