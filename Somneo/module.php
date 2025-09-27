@@ -650,11 +650,3 @@ class PhilipsSomneoWake extends IPSModule
         return $headers;
     }
 }
-
-// Kompatibilitätsklasse: Falls der Kernel den alten Namensstil erwartet
-if (!class_exists('SOMNEO_Somneo')) {
-    class SOMNEO_Somneo extends PhilipsSomneoWake {}
-}
-if (!class_exists('PhilipsSomneoWakeupLight')) {
-    class PhilipsSomneoWakeupLight extends PhilipsSomneoWake {}
-}
