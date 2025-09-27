@@ -6,6 +6,7 @@
   "parentRequirements": [],
   "childRequirements": [],
   "implemented": [],
+  "aliases": ["WakeupLight"],
   "prefix": "SOMNEO",
   "url": "https://github.com/alschimmi/Symcon_Philips_Wakeup_Light/tree/main/Somneo"
 }
