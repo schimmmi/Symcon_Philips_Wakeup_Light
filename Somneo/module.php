@@ -120,6 +120,9 @@ class PhilipsSomneoWake extends IPSModule
         // Manuelle Aktualisierung
         $this->RegisterVariableBoolean('Refresh', 'Aktualisieren', '~Switch', 90);
         $this->EnableAction('Refresh');
+
+        // Timer wird gemäß IP‑Symcon-Vorgaben in Create() registriert
+        $this->RegisterTimer('UpdateTimer', 0, 'SOMNEO_Update($_IPS["TARGET"]);');
     }
 
     public function ApplyChanges()
@@ -138,8 +141,8 @@ class PhilipsSomneoWake extends IPSModule
         // Timer für automatische Aktualisierung registrieren/aktualisieren
         $intervalSec = max(0, (int)$this->ReadPropertyInteger('UpdateInterval'));
         $intervalMs = $intervalSec > 0 ? $intervalSec * 1000 : 0;
-        // Timer anlegen (falls nicht vorhanden) und Intervall separat setzen
-        $this->RegisterTimer('UpdateTimer', 0, 'SOMNEO_Update($_IPS["TARGET"]);');
+        // Timer pflegen und Intervall setzen
+        $this->MaintainTimer('UpdateTimer', $intervalMs > 0);
         $this->SetTimerInterval('UpdateTimer', $intervalMs);
         $this->SendDebug('ApplyChanges', 'UpdateTimer Intervall: ' . $intervalMs . ' ms', 0);
     }
