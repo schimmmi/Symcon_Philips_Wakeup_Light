@@ -125,6 +125,20 @@ class PhilipsSomneoWake extends IPSModule
     public function ApplyChanges()
     {
         parent::ApplyChanges();
+
+        // Status abhängig von Konfiguration setzen
+        $baseURL = trim($this->ReadPropertyString('BaseURL'));
+        $host = trim($this->ReadPropertyString('Host'));
+        if ($baseURL === '' && $host === '') {
+            $this->SetStatus(104); // Bitte URL oder Host/IP konfigurieren
+        } else {
+            $this->SetStatus(102); // Aktiv
+        }
+
+        // Timer für automatische Aktualisierung registrieren
+        $intervalSec = max(0, (int)$this->ReadPropertyInteger('UpdateInterval'));
+        $intervalMs = $intervalSec > 0 ? $intervalSec * 1000 : 0;
+        $this->RegisterTimer('UpdateTimer', $intervalMs, 'SOMNEO_Update($_IPS["TARGET"]);');
     }
 
     public function RequestAction($Ident, $Value)
