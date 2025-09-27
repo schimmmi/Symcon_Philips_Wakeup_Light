@@ -143,7 +143,7 @@ class PhilipsSomneoWake extends IPSModule
         $intervalSec = max(0, (int)$this->ReadPropertyInteger('UpdateInterval'));
         $intervalMs = $intervalSec > 0 ? $intervalSec * 1000 : 0;
         // Timer-Intervall setzen, sofern der Timer existiert (Timer wird nur in Create() angelegt)
-        $timerId = @IPS_GetEventIDByName('UpdateTimer', $this->InstanceID);
+        $timerId = @$this->GetIDForIdent('UpdateTimer');
         if (is_int($timerId) && $timerId > 0) {
             $this->SetTimerInterval('UpdateTimer', $intervalMs);
             $this->SendDebug('ApplyChanges', 'UpdateTimer Intervall: ' . $intervalMs . ' ms', 0);
