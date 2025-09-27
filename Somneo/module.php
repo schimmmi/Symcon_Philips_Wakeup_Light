@@ -123,7 +123,7 @@ class SOMNEO_Somneo extends IPSModule
         parent::ApplyChanges();
 
         // Timer für zyklisches Aktualisieren
-        $this->RegisterTimer('UpdateTimer', 0, 'SOMNEO_Update($_IPS["TARGET"]);');
+        $this->RegisterTimer('UpdateTimer', 0, 'SOMNEO_Update($_IPS[\'TARGET\']);');
         $interval = max(0, $this->ReadPropertyInteger('UpdateInterval')) * 1000;
         $this->SetTimerInterval('UpdateTimer', $interval);
     }
