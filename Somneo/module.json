@@ -3,10 +3,6 @@
   "name": "Philips Somneo (HF3671/01)",
   "type": 3,
   "vendor": "Philips",
-  "aliases": [
-    "Somneo",
-    "Wake-up Light"
-  ],
   "parentRequirements": [],
   "childRequirements": [],
   "implemented": [],
