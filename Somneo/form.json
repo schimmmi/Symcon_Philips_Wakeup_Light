@@ -48,9 +48,7 @@
     { "type": "Label", "caption": "Automatische Aktualisierung" },
     { "type": "NumberSpinner", "name": "UpdateInterval", "caption": "Intervall (Sekunden)", "minimum": 0, "maximum": 86400 }
   ],
-  "actions": [
-    { "type": "Button", "caption": "Jetzt aktualisieren", "onClick": "SOMNEO_Update($id);" }
-  ],
+  "actions": [],
   "status": [
     { "code": 101, "icon": "inactive", "caption": "Wird erstellt" },
     { "code": 102, "icon": "active", "caption": "Aktiv" },
