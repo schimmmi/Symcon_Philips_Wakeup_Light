@@ -13,6 +13,11 @@
  */
 class PhilipsSomneoWake extends IPSModule
 {
+    public function __construct($InstanceID)
+    {
+        parent::__construct($InstanceID);
+    }
+
     public function Create()
     {
         // Never delete this line!
@@ -650,3 +655,11 @@ class PhilipsSomneoWake extends IPSModule
         return $headers;
     }
 }
+
+
+// Alias-Klassen für Kernel-Kompatibilität / Migrationspfade
+// Der IP-Symcon Kernel leitet Klassennamen teils aus dem Modulnamen bzw. Prefix ab.
+// Diese Alias-Klassen stellen sicher, dass sowohl "PhilipsSomneoWakeupLight" als auch der alte Name
+// "SOMNEO_Somneo" gefunden werden und auf die eigentliche Implementierung verweisen.
+class PhilipsSomneoWakeupLight extends PhilipsSomneoWake {}
+class SOMNEO_Somneo extends PhilipsSomneoWake {}
