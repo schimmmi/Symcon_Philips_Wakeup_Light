@@ -1,0 +1,60 @@
+{
+  "elements": [
+    { "type": "Label", "caption": "Philips Somneo (HF3671/01) – Einstellungen" },
+    { "type": "ValidationTextBox", "name": "BaseURL", "caption": "URL (optional, überschreibt Host/Port)", "width": "600px" },
+    { "type": "ValidationTextBox", "name": "Host", "caption": "IP / Hostname" },
+    { "type": "NumberSpinner", "name": "Port", "caption": "Port", "minimum": 1, "maximum": 65535 },
+    { "type": "CheckBox", "name": "UseHTTPS", "caption": "HTTPS verwenden" },
+    { "type": "CheckBox", "name": "VerifyTLS", "caption": "TLS-Zertifikat prüfen" },
+    { "type": "NumberSpinner", "name": "Timeout", "caption": "Timeout (ms)", "minimum": 500, "maximum": 60000 },
+
+    { "type": "Label", "caption": "Authentifizierung (optional)" },
+    { "type": "ValidationTextBox", "name": "AuthHeaderName", "caption": "Header-Name (z. B. Authorization)" },
+    { "type": "PasswordTextBox", "name": "AuthHeaderValue", "caption": "Header-Wert (z. B. Bearer <token>)" },
+
+    { "type": "Label", "caption": "API-Endpunkte" },
+    { "type": "ValidationTextBox", "name": "AlarmsEndpoint", "caption": "Alarme (GET)" },
+
+    { "type": "Label", "caption": "Erweiterte Endpunkte (optional)" },
+    { "type": "ValidationTextBox", "name": "DeviceInfoEndpoint", "caption": "Geräteinfo (GET)" },
+    { "type": "ValidationTextBox", "name": "SensorsEndpoint", "caption": "Sensoren (GET)" },
+
+    { "type": "ValidationTextBox", "name": "LightStatusEndpoint", "caption": "Lichtstatus (GET)" },
+    { "type": "ValidationTextBox", "name": "LightControlEndpoint", "caption": "Licht Ein/Aus (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "LightControlMethod", "caption": "Methode für Licht (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "LightOnPayload", "caption": "Payload: Licht EIN (JSON)" },
+    { "type": "ValidationTextBox", "name": "LightOffPayload", "caption": "Payload: Licht AUS (JSON)" },
+
+    { "type": "ValidationTextBox", "name": "BrightnessEndpoint", "caption": "Helligkeit setzen (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "BrightnessMethod", "caption": "Methode für Helligkeit (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "BrightnessPayloadTemplate", "caption": "Payload-Template Helligkeit (z. B. {\"brightness\":%d})" },
+
+    { "type": "ValidationTextBox", "name": "SunsetStartEndpoint", "caption": "Sonnenuntergang START (POST)" },
+    { "type": "ValidationTextBox", "name": "SunsetStartMethod", "caption": "Methode für Sunset START (POST)" },
+    { "type": "ValidationTextBox", "name": "SunsetStartPayload", "caption": "Payload für Sunset START (JSON)" },
+    { "type": "ValidationTextBox", "name": "SunsetStopEndpoint", "caption": "Sonnenuntergang STOP (POST)" },
+    { "type": "ValidationTextBox", "name": "SunsetStopMethod", "caption": "Methode für Sunset STOP (POST)" },
+    { "type": "ValidationTextBox", "name": "SunsetStopPayload", "caption": "Payload für Sunset STOP (JSON)" },
+
+    { "type": "ValidationTextBox", "name": "VolumeStatusEndpoint", "caption": "Audio/Lautstärke Status (GET)" },
+    { "type": "ValidationTextBox", "name": "VolumeSetEndpoint", "caption": "Lautstärke setzen (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "VolumeMethod", "caption": "Methode für Lautstärke (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "VolumePayloadTemplate", "caption": "Payload-Template Lautstärke (z. B. {\"volume\":%d})" },
+    { "type": "ValidationTextBox", "name": "MuteSetEndpoint", "caption": "Stumm schalten (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "MuteMethod", "caption": "Methode für Stumm (PUT/POST)" },
+    { "type": "ValidationTextBox", "name": "MuteOnPayload", "caption": "Payload: Stumm EIN (JSON)" },
+    { "type": "ValidationTextBox", "name": "MuteOffPayload", "caption": "Payload: Stumm AUS (JSON)" },
+
+    { "type": "Label", "caption": "Automatische Aktualisierung" },
+    { "type": "NumberSpinner", "name": "UpdateInterval", "caption": "Intervall (Sekunden)", "minimum": 0, "maximum": 86400 }
+  ],
+  "actions": [
+    { "type": "Button", "caption": "Jetzt aktualisieren", "onClick": "SOMNEO_Update($id);" }
+  ],
+  "status": [
+    { "code": 101, "icon": "inactive", "caption": "Wird erstellt" },
+    { "code": 102, "icon": "active", "caption": "Aktiv" },
+    { "code": 104, "icon": "warning", "caption": "Bitte URL oder Host/IP konfigurieren" },
+    { "code": 201, "icon": "error", "caption": "Konfigurationsfehler" }
+  ]
+}
