@@ -123,6 +123,7 @@ class PhilipsSomneoWake extends IPSModule
 
         // Timer wird gemäß IP‑Symcon-Vorgaben in Create() registriert
         $this->RegisterTimer('UpdateTimer', 0, 'SOMNEO_Update($_IPS["TARGET"]);');
+        $this->SendDebug('Create', 'Timer UpdateTimer registriert', 0);
     }
 
     public function ApplyChanges()
