@@ -141,10 +141,14 @@ class PhilipsSomneoWake extends IPSModule
         // Timer für automatische Aktualisierung registrieren/aktualisieren
         $intervalSec = max(0, (int)$this->ReadPropertyInteger('UpdateInterval'));
         $intervalMs = $intervalSec > 0 ? $intervalSec * 1000 : 0;
-        // Timer pflegen und Intervall setzen
-        $this->MaintainTimer('UpdateTimer', $intervalMs > 0);
-        $this->SetTimerInterval('UpdateTimer', $intervalMs);
-        $this->SendDebug('ApplyChanges', 'UpdateTimer Intervall: ' . $intervalMs . ' ms', 0);
+        // Timer-Intervall setzen, sofern der Timer existiert (Timer wird nur in Create() angelegt)
+        $timerId = @IPS_GetEventIDByName('UpdateTimer', $this->InstanceID);
+        if (is_int($timerId) && $timerId > 0) {
+            $this->SetTimerInterval('UpdateTimer', $intervalMs);
+            $this->SendDebug('ApplyChanges', 'UpdateTimer Intervall: ' . $intervalMs . ' ms', 0);
+        } else {
+            $this->SendDebug('ApplyChanges', 'UpdateTimer existiert nicht (wird nur in Create() angelegt). Für bestehende Instanzen ggf. neu anlegen, um die Automatik zu aktivieren.', 0);
+        }
     }
 
     public function RequestAction($Ident, $Value)
