@@ -1,11 +1,12 @@
 {
   "id": "{5E3C0A36-9C4C-46A3-9F8A-2A8B9C6DE2B1}",
-  "author": "Junie (JetBrains AI)",
+  "author": "Jürgen Schilling <jergen_schilling@web.de>",
   "name": "Philips Somneo Wake-up Light",
   "url": "https://github.com/alschimmi/Symcon_Philips_Wakeup_Light",
   "version": "1.0",
   "build": 1,
   "date": 0,
+  "license": "MIT",
   "compatibility": {
     "version": "8.0"
   }
