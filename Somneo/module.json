@@ -3,7 +3,6 @@
   "name": "Philips Somneo Wake-up Light",
   "type": 3,
   "vendor": "Philips",
-  "aliases": ["Wake-up Light"],
   "parentRequirements": [],
   "childRequirements": [],
   "implemented": [],
