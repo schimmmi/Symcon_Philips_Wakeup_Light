@@ -13,7 +13,7 @@
  */
 class SOMNEO_Somneo extends IPSModule
 {
-    public function Create(): void
+    public function Create()
     {
         // Never delete this line!
         parent::Create();
@@ -117,7 +117,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->EnableAction('Refresh');
     }
 
-    public function ApplyChanges(): void
+    public function ApplyChanges()
     {
         parent::ApplyChanges();
 
@@ -171,7 +171,7 @@ class SOMNEO_Somneo extends IPSModule
         }
     }
 
-    public function Update(): void
+    public function Update()
     {
         $this->SendDebug('Update', 'Starte Aktualisierung', 0);
         $baseURL = trim($this->ReadPropertyString('BaseURL'));
@@ -206,7 +206,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->updateAudioStatus();
     }
 
-    private function parseAndPublishAlarms($json): void
+    private function parseAndPublishAlarms($json)
     {
         // Ziel: Bis zu 4 Alarme erkennen. Da Struktur je nach FW abweichen kann,
         // versuchen wir ein paar gängige Varianten.
@@ -286,7 +286,7 @@ class SOMNEO_Somneo extends IPSModule
         }
     }
 
-    private function updateDeviceInfo(): void
+    private function updateDeviceInfo()
     {
         $ep = trim($this->ReadPropertyString('DeviceInfoEndpoint'));
         if ($ep === '') {
@@ -322,7 +322,7 @@ class SOMNEO_Somneo extends IPSModule
         }
     }
 
-    private function updateSensors(): void
+    private function updateSensors()
     {
         $ep = trim($this->ReadPropertyString('SensorsEndpoint'));
         if ($ep === '') {
@@ -360,7 +360,7 @@ class SOMNEO_Somneo extends IPSModule
         }
     }
 
-    private function updateLightStatus(): void
+    private function updateLightStatus()
     {
         $ep = trim($this->ReadPropertyString('LightStatusEndpoint'));
         if ($ep === '') {
@@ -390,7 +390,7 @@ class SOMNEO_Somneo extends IPSModule
         }
     }
 
-    private function updateAudioStatus(): void
+    private function updateAudioStatus()
     {
         $ep = trim($this->ReadPropertyString('VolumeStatusEndpoint'));
         if ($ep === '') {
@@ -417,7 +417,7 @@ class SOMNEO_Somneo extends IPSModule
         }
     }
 
-    private function tryFindNumeric($obj, array $keys)
+    private function tryFindNumeric($obj, $keys)
     {
         foreach ($keys as $k) {
             if (isset($obj->$k) && is_numeric($obj->$k)) {
@@ -437,7 +437,7 @@ class SOMNEO_Somneo extends IPSModule
         return null;
     }
 
-    private function tryFindBool($obj, array $keys)
+    private function tryFindBool($obj, $keys)
     {
         foreach ($keys as $k) {
             if (isset($obj->$k)) {
@@ -463,7 +463,7 @@ class SOMNEO_Somneo extends IPSModule
         return null;
     }
 
-    private function setLightOn(bool $on): void
+    private function setLightOn($on)
     {
         $ep = trim($this->ReadPropertyString('LightControlEndpoint'));
         if ($ep === '') {
@@ -475,7 +475,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->request($method, $ep, $payload);
     }
 
-    private function setBrightness(int $value): void
+    private function setBrightness($value)
     {
         $ep = trim($this->ReadPropertyString('BrightnessEndpoint'));
         if ($ep === '') {
@@ -499,7 +499,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->request($method, $ep, $payload);
     }
 
-    private function startSunset(): void
+    private function startSunset()
     {
         $ep = trim($this->ReadPropertyString('SunsetStartEndpoint'));
         if ($ep === '') {
@@ -511,7 +511,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->request($method, $ep, $payload);
     }
 
-    private function stopSunset(): void
+    private function stopSunset()
     {
         $ep = trim($this->ReadPropertyString('SunsetStopEndpoint'));
         if ($ep === '') {
@@ -523,7 +523,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->request($method, $ep, $payload);
     }
 
-    private function setVolume(int $value): void
+    private function setVolume($value)
     {
         $ep = trim($this->ReadPropertyString('VolumeSetEndpoint'));
         if ($ep === '') {
@@ -540,7 +540,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->request($method, $ep, $payload);
     }
 
-    private function setMute(bool $mute): void
+    private function setMute($mute)
     {
         $ep = trim($this->ReadPropertyString('MuteSetEndpoint'));
         if ($ep === '') {
@@ -552,7 +552,7 @@ class SOMNEO_Somneo extends IPSModule
         $this->request($method, $ep, $payload);
     }
 
-    private function request(string $method, string $path, $payload = null)
+    private function request($method, $path, $payload = null)
     {
         $timeoutMs = $this->ReadPropertyInteger('Timeout');
         $verify = $this->ReadPropertyBoolean('VerifyTLS');
@@ -644,7 +644,7 @@ class SOMNEO_Somneo extends IPSModule
         return $decoded;
     }
 
-    private function buildHeaders(): array
+    private function buildHeaders()
     {
         $headers = ['Accept: application/json'];
         if ($this->ReadPropertyString('AuthHeaderName') !== '' && $this->ReadPropertyString('AuthHeaderValue') !== '') {
